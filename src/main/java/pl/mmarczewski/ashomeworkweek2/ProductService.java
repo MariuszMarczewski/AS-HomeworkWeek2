@@ -1,5 +1,6 @@
 package pl.mmarczewski.ashomeworkweek2;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,8 @@ public class ProductService {
 
     public ProductService() {
 
+        info = new Info();
+
         min = 50;
         max = 300;
 
@@ -43,7 +46,11 @@ public class ProductService {
         double tempPrice = cart.stream()
                 .mapToDouble(Product::getPrice)
                 .sum();
+
         System.out.println("Total cart price: " + tempPrice);
+        System.out.println(" !!! TEST !!! " + info.getVat());
+        System.out.println(" !!! TEST !!! " + info.getDiscount());
+        System.out.println(" !!! TEST !!! " + info.getMessage());
     }
 
     public List<Product> getCart() {

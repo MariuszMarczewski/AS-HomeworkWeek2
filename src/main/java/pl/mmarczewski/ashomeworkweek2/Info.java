@@ -6,7 +6,10 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Info {
+public class Info{
+
+    public Info() {
+    }
 
     @Value("${info-VAT}")
     private String vat;
@@ -31,6 +34,6 @@ public class Info {
 
     @EventListener(ApplicationReadyEvent.class)
     public void get(){
-        System.out.println("Important: " + message);
+        System.out.println("!!! Testing !!!" );
     }
 }

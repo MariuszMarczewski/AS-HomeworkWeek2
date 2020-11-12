@@ -1,0 +1,19 @@
+{
+  "properties": [
+    {
+      "name": "info-discount",
+      "type": "java.lang.String",
+      "description": "Description for info-discount."
+    },
+    {
+      "name": "info-VAT",
+      "type": "java.lang.String",
+      "description": "Description for info-VAT."
+    },
+    {
+      "name": "info-message",
+      "type": "java.lang.String",
+      "description": "Description for info-message."
+    }
+  ]
+}
