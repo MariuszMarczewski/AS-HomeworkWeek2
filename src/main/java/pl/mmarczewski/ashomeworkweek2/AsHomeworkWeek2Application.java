@@ -14,6 +14,6 @@ public class AsHomeworkWeek2Application {
 
     @EventListener(ApplicationReadyEvent.class)
     public void checkIfOK(){
-        System.out.println("Welcome!");
+        System.out.println("Working!");
     }
 }

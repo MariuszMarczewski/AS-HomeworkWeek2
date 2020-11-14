@@ -34,6 +34,6 @@ public class Info{
 
     @EventListener(ApplicationReadyEvent.class)
     public void get(){
-        System.out.println("!!! Testing !!!" );
+        System.out.println("Welcome again!" );
     }
 }

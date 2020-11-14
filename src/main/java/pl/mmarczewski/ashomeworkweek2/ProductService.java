@@ -1,5 +1,6 @@
 package pl.mmarczewski.ashomeworkweek2;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -23,9 +24,9 @@ public class ProductService {
         return random.nextInt(max - min) + min;
     }
 
-    public ProductService() {
-
-        info = new Info();
+    @Autowired
+    public ProductService(Info info) {
+        this.info = info;
 
         min = 50;
         max = 300;
@@ -47,10 +48,11 @@ public class ProductService {
                 .mapToDouble(Product::getPrice)
                 .sum();
 
-        System.out.println("Total cart price: " + tempPrice);
-        System.out.println(" !!! TEST !!! " + info.getVat());
-        System.out.println(" !!! TEST !!! " + info.getDiscount());
-        System.out.println(" !!! TEST !!! " + info.getMessage());
+        System.out.println("Your order (prices netto and withount discunt): ");
+        System.out.println(cart);
+        System.out.println(info.getMessage());
+        System.out.println("Final order price: " + tempPrice * Double.parseDouble(info.getDiscount())
+                * Double.parseDouble(info.getDiscount()));
     }
 
     public List<Product> getCart() {
@@ -59,13 +61,8 @@ public class ProductService {
 
     public double getCartPrice() {
         return cart.stream()
-                .mapToDouble(Product::getPrice)
+                .mapToDouble(cart -> cart.getPrice() * Double.parseDouble(info.getDiscount())
+                        * Double.parseDouble(info.getDiscount()))
                 .sum();
-    }
-
-    public static void main(String[] args) {
-        ProductService productService = new ProductService();
-        productService.getCart();
-        productService.getCartPrice();
     }
 }
